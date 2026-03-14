@@ -1,1 +1,167 @@
-<p>home works!</p>
+<mat-sidenav-container class="dashboard-container">
+  <mat-sidenav mode="side" opened class="sidebar">
+    <div class="sidebar-header">
+      <mat-icon class="logo-icon">widgets</mat-icon>
+      <span class="logo-text">SUPPLIER<b>HUB</b></span>
+    </div>
+
+    <mat-nav-list class="menu-list">
+      <div class="menu-label">เมนูหลัก</div>
+      
+      <a mat-list-item class="menu-item active">
+        <mat-icon matListItemIcon>dashboard</mat-icon>
+        <span matListItemTitle>แดชบอร์ด</span>
+      </a>
+
+      <a mat-list-item class="menu-item">
+        <mat-icon matListItemIcon>assignment</mat-icon>
+        <span matListItemTitle>ใบสั่งของ (Orders)</span>
+        <span class="badge-custom">3</span>
+      </a>
+
+      <a mat-list-item class="menu-item">
+        <mat-icon matListItemIcon>inventory_2</mat-icon>
+        <span matListItemTitle>สินค้าและวัตถุดิบ</span>
+      </a>
+    </mat-nav-list>
+
+    <div class="sidebar-footer">
+      <div class="user-profile">
+        <div class="avatar">A</div>
+        <div class="user-info">
+          <div class="name">ABC Supplier Co.</div>
+          <div class="logout">ออกจากระบบ</div>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="content-area">
+    <div class="top-bar">
+      <div class="search-box">
+        <mat-icon>search</mat-icon>
+        <input type="text" placeholder="ค้นหาทั่วทั้งระบบ...">
+      </div>
+    </div>
+
+    <div class="dashboard-content">
+      <h2 class="page-title">แดชบอร์ดผู้ขาย</h2>
+      <p class="page-subtitle">ภาพรวมการสั่งซื้อและสถานะการจัดส่งของคุณวันนี้</p>
+
+      <div class="dashboard-body">
+        
+        <div class="row mb-4">
+          <div class="col-md-4">
+            <mat-card class="summary-card">
+              <mat-card-content class="d-flex align-items-center">
+                <div class="icon-circle warning">
+                  <mat-icon>assignment_late</mat-icon>
+                </div>
+                <div class="ms-3">
+                  <div class="card-label">รอจัดส่งตามใบสั่งของ</div>
+                  <div class="card-value">3 <span class="unit">รายการ</span></div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+
+          <div class="col-md-4">
+            <mat-card class="summary-card">
+              <mat-card-content class="d-flex align-items-center">
+                <div class="icon-circle info">
+                  <mat-icon>local_shipping</mat-icon>
+                </div>
+                <div class="ms-3">
+                  <div class="card-label">กำลังจัดส่ง</div>
+                  <div class="card-value">12 <span class="unit">รายการ</span></div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+
+          <div class="col-md-4">
+            <mat-card class="summary-card">
+              <mat-card-content class="d-flex align-items-center">
+                <div class="icon-circle success">
+                  <mat-icon>monetization_on</mat-icon>
+                </div>
+                <div class="ms-3">
+                  <div class="card-label">ยอดขายเดือนนี้</div>
+                  <div class="card-value">฿145,200</div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-8">
+            <mat-card class="table-card">
+              <div class="card-header d-flex justify-content-between align-items-center">
+                <span class="table-title">ใบสั่งของล่าสุดที่ต้องจัดการ</span>
+                <button mat-button color="primary">ดูทั้งหมด</button>
+              </div>
+              <mat-card-content>
+                <table class="table custom-table">
+                  <thead>
+                    <tr>
+                      <th>รหัส PO</th>
+                      <th>วันที่</th>
+                      <th>สถานะ</th>
+                      <th>ยอดเงิน</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="po-code">PO-1045</td>
+                      <td>วันนี้ 10:30</td>
+                      <td><span class="status-badge orange">รอจัดส่ง</span></td>
+                      <td>฿45,000</td>
+                    </tr>
+                    <tr>
+                      <td class="po-code">PO-1044</td>
+                      <td>เมื่อวาน</td>
+                      <td><span class="status-badge orange">รอจัดส่ง</span></td>
+                      <td>฿12,500</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </mat-card-content>
+            </mat-card>
+          </div>
+
+          <div class="col-md-4">
+            <mat-card class="role-card purple-theme">
+              <mat-card-content>
+                <div class="role-header">
+                  <div class="role-icon-box">
+                    <mat-icon>local_shipping</mat-icon>
+                  </div>
+                  <div class="role-title">
+                    <h3>Supplier</h3>
+                    <span>(บทบาทของคุณในระบบ)</span>
+                  </div>
+                </div>
+                <div class="role-detail mt-4">
+                  <div class="detail-item">
+                    <mat-icon>group</mat-icon>
+                    <div>
+                      <div class="detail-label">บทบาท</div>
+                      <div class="detail-text">เป็นบริษัทคู่ค้าที่จำหน่ายสินค้า/วัตถุดิบ</div>
+                    </div>
+                  </div>
+                  <div class="detail-item mt-3">
+                    <mat-icon>check_circle_outline</mat-icon>
+                    <div>
+                      <div class="detail-label">หน้าที่</div>
+                      <div class="detail-text">ขายและจัดส่งสินค้าตามใบสั่งของ</div>
+                    </div>
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+
+      </div> </div> </mat-sidenav-content>
+</mat-sidenav-container>

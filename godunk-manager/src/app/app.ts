@@ -1,11 +1,15 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
-  standalone: false,
-  styleUrl: './app.css'
+  styleUrls: ['./app.css'],
+  standalone: false // <--- เพิ่มบรรทัดนี้เข้าไปเลยครับ! บังคับให้มันเป็นแบบ Module ปกติ
 })
 export class App {
-  protected readonly title = signal('godunk-manager');
+  currentPage: string = 'dashboard';
+
+  setPage(pageName: string) {
+    this.currentPage = pageName;
+  }
 }

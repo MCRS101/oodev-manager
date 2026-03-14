@@ -1,0 +1,88 @@
+<div class="container-fluid p-4">
+  <div class="d-flex justify-content-between align-items-center mb-4 header-anim">
+    <div>
+      <h2 class="fw-bold m-0 text-success gradient-text">การเงินและรายได้</h2>
+      <div class="d-flex align-items-center gap-2">
+        <span class="status-dot online"></span>
+        <p class="text-muted small m-0">อัปเดตข้อมูลล่าสุดเมื่อ: 2 นาทีที่แล้ว</p>
+      </div>
+    </div>
+    <div class="action-buttons">
+      <button mat-stroked-button class="me-2 rounded-pill border-success text-success">
+        <mat-icon>file_upload</mat-icon> นำเข้า CSV
+      </button>
+      <button mat-flat-button color="success" class="rounded-pill shadow-sm">
+        <mat-icon>add</mat-icon> สร้างใบแจ้งหนี้
+      </button>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-md-4" *ngFor="let card of [
+      {label: 'รายได้ทั้งหมด', val: summary.totalRevenue, type: 'rev', icon: 'trending_up'},
+      {label: 'ค้างชำระ', val: summary.pendingAmount, type: 'pen', icon: 'error_outline'},
+      {label: 'ใบเสร็จสำเร็จ', val: summary.completedBills, type: 'count', icon: 'verified'}
+    ]">
+      <div class="finance-card-pro" [ngClass]="card.type">
+        <div class="card-info">
+          <span class="label">{{card.label}}</span>
+          <h2 class="value">{{ (card.type === 'count' ? card.val : (card.val | currency:'THB':'symbol-narrow':'1.0-0')) }}</h2>
+        </div>
+        <mat-icon class="icon-glass">{{card.icon}}</mat-icon>
+        <div class="wave"></div>
+      </div>
+    </div>
+  </div>
+
+  <mat-card class="glass-card shadow-lg">
+    <div class="p-3 d-flex justify-content-between align-items-center bg-faded">
+      <div class="fw-bold"><mat-icon inline>list</mat-icon> รายการธุรกรรมล่าสุด</div>
+      <div class="search-mini">
+        <mat-icon>search</mat-icon>
+        <input type="text" placeholder="ค้นหาตามชื่อลูกค้าหรือเลขที่...">
+      </div>
+    </div>
+    
+    <div class="table-responsive">
+      <table class="table table-hover align-middle m-0">
+        <thead>
+          <tr class="thead-dark">
+            <th class="ps-4">No.</th>
+            <th>ลูกค้า / วันที่</th>
+            <th class="text-end">ยอดเงิน</th>
+            <th class="text-center">ความคืบหน้า</th>
+            <th class="text-center">สถานะ</th>
+            <th class="text-end pe-4">จัดการ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let t of transactions" class="row-hover-effect">
+            <td class="ps-4 text-muted fw-bold small">{{t.id}}</td>
+            <td>
+              <div class="fw-bold">{{t.customer}}</div>
+              <div class="x-small text-muted">{{t.date}}</div>
+            </td>
+            <td class="text-end fw-bold text-success">{{t.amount | currency:'THB':'symbol-narrow':'1.0-0'}}</td>
+            <td class="text-center" style="width: 150px;">
+              <div class="mini-progress-bg">
+                <div class="mini-progress-bar" [style.width.%]="t.status === 'paid' ? 100 : 40" [ngClass]="t.status"></div>
+              </div>
+            </td>
+            <td class="text-center">
+              <span class="badge-modern" [ngClass]="t.status">
+                <mat-icon *ngIf="t.status === 'paid'">done</mat-icon>
+                {{ t.status === 'paid' ? 'ชำระแล้ว' : t.status === 'pending' ? 'รอโอน' : 'เกินกำหนด' }}
+              </span>
+            </td>
+            <td class="text-end pe-4">
+              <div class="hover-actions">
+                <button mat-icon-button color="primary"><mat-icon>visibility</mat-icon></button>
+                <button mat-icon-button color="warn"><mat-icon>get_app</mat-icon></button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-card>
+</div>
